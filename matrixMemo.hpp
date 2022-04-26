@@ -24,6 +24,11 @@ int matrixMemoisation(int *dimensions, int tableIndex1, int tableIndex2)
 
 int matrixMemoisationDriver(int *dimensions, int lengthOfList)
 {
+    for(int i = 0;i<150;i++){
+        for(int j = 0;j<150;j++){
+            table[i][j] = 0;
+        }
+    }
     int tableIndex1 = 1;
     int tableIndex2 = lengthOfList - 1;
     int scalarMultCount = matrixMemoisation(dimensions, tableIndex1, tableIndex2);
