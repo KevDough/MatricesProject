@@ -2,7 +2,7 @@
 using namespace std;
 #define INF 2147483647 
 
-int table[150][150];
+int table[2049][2049];
 int previous;
 
 int matrixMemoisation(int *dimensions, int tableIndex1, int tableIndex2)
