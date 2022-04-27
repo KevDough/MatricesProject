@@ -7,7 +7,7 @@ int previous;
 
 int matrixMemoisation(int *dimensions, int tableIndex1, int tableIndex2)
 {
-    if(table[tableIndex1][tableIndex2] != NULL){
+    if(table[tableIndex1][tableIndex2] != '\0'){
         return table[tableIndex1][tableIndex2];
     }
 

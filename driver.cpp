@@ -24,9 +24,9 @@ void runTestCase(vector<int> testCaseInput) {
     cout << "Memoized: " << memoizedResult << "\t\tTime Taken: " << memoizedTimeTaken << " nanoseconds" << endl;
 
     if (dynamicTimeTaken > memoizedTimeTaken) {
-        cout << "The dynamic algorithm took " << 1 + double(double(dynamicTimeTaken) / double(memoizedTimeTaken)) << " times longer than the memoized algorithm" << endl; 
+        cout << "The dynamic algorithm took " << double(double(dynamicTimeTaken) / double(memoizedTimeTaken)) << " times longer than the memoized algorithm" << endl; 
     } else if (memoizedTimeTaken > dynamicTimeTaken) {
-        cout << "The memoized algorithm took " << 1 + double(double(memoizedTimeTaken) / double(dynamicTimeTaken)) << " times longer than the dynamic algorithm" << endl; 
+        cout << "The memoized algorithm took " << double(double(memoizedTimeTaken) / double(dynamicTimeTaken)) << " times longer than the dynamic algorithm" << endl; 
     } else {
         cout << "The dynamic and memoized algorithms ran in the same amount of time" << endl;
     }

@@ -1,4 +1,4 @@
-all: driver.o
+all: driver.o testInputGenerator.o
 
 input: testInputGenerator.o
 
