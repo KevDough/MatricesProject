@@ -3,7 +3,7 @@ using namespace std;
 #define INF 2147483647 
 
 int table[150][150];
-
+int previous;
 
 int matrixMemoisation(int *dimensions, int tableIndex1, int tableIndex2)
 {
@@ -24,8 +24,8 @@ int matrixMemoisation(int *dimensions, int tableIndex1, int tableIndex2)
 
 int matrixMemoisationDriver(int *dimensions, int lengthOfList)
 {
-    for(int i = 0;i<150;i++){
-        for(int j = 0;j<150;j++){
+    for(int i = 0;i<lengthOfList;i++){
+        for(int j = 0;j<lengthOfList;j++){
             table[i][j] = 0;
         }
     }
