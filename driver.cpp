@@ -15,13 +15,13 @@ void runTestCase(vector<int> testCaseInput) {
     auto dynamicStart = chrono::steady_clock::now();
     int dynamicResult = matrixDynamicProgramming(arrayTestCase, sizeof(arrayTestCase) / sizeof(arrayTestCase[0]));
     auto dynamicEnd = chrono::steady_clock::now();
-    int dynamicTimeTaken = chrono::duration_cast<chrono::nanoseconds>(dynamicEnd - dynamicStart).count();
-    cout << "Dynamic: " << dynamicResult << "\t\tTime Taken: " << dynamicTimeTaken << " nanoseconds" << endl;
+    int dynamicTimeTaken = chrono::duration_cast<chrono::microseconds>(dynamicEnd - dynamicStart).count();
+    cout << "Dynamic: " << dynamicResult << "\t\tTime Taken: " << dynamicTimeTaken << " microseconds" << endl;
     auto memoizedStart = chrono::steady_clock::now();
     int memoizedResult = matrixMemoisationDriver(arrayTestCase, sizeof(arrayTestCase) / sizeof(arrayTestCase[0]));
     auto memoizedEnd = chrono::steady_clock::now();
-    int memoizedTimeTaken = chrono::duration_cast<chrono::nanoseconds>(memoizedEnd - memoizedStart).count();
-    cout << "Memoized: " << memoizedResult << "\t\tTime Taken: " << memoizedTimeTaken << " nanoseconds" << endl;
+    int memoizedTimeTaken = chrono::duration_cast<chrono::microseconds>(memoizedEnd - memoizedStart).count();
+    cout << "Memoized: " << memoizedResult << "\t\tTime Taken: " << memoizedTimeTaken << " microseconds" << endl;
 
     if (dynamicTimeTaken > memoizedTimeTaken) {
         cout << "The dynamic algorithm took " << 1 + double(double(dynamicTimeTaken) / double(memoizedTimeTaken)) << " times longer than the memoized algorithm" << endl; 
