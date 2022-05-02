@@ -7,7 +7,7 @@ int matrixDynamicProgramming(int dimensions[], int lengthOfList)
     int tableIndex1, tableIndex2;
     int scalarMultCount = 0;
 
-    //fill table with 0s
+    //fill bottom row with 0s
     for (int dimensionIndex = 1; dimensionIndex < lengthOfList; dimensionIndex++)
         table[dimensionIndex][dimensionIndex] = 0;
  

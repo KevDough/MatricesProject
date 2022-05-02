@@ -9,14 +9,14 @@
 
 using namespace std;
 
-void runTestCase(vector<int> testCaseInput) {
+void runTestCase(vector<int> testCaseInput,ofstream &outputFile,ofstream &performanceDiff) {
     int arrayTestCase[testCaseInput.size()];
     copy(testCaseInput.begin(), testCaseInput.end(), arrayTestCase);
     auto dynamicStart = chrono::steady_clock::now();
     int dynamicResult = matrixDynamicProgramming(arrayTestCase, sizeof(arrayTestCase) / sizeof(arrayTestCase[0]));
     auto dynamicEnd = chrono::steady_clock::now();
     int dynamicTimeTaken = chrono::duration_cast<chrono::microseconds>(dynamicEnd - dynamicStart).count();
-    cout << "Dynamic: " << dynamicResult << "\t\tTime Taken: " << dynamicTimeTaken << " microseconds" << endl;
+    outputFile << "Dynamic: " << dynamicResult << "\t\tTime Taken: " << dynamicTimeTaken << " microseconds" << endl;
     //auto memoizedStart = chrono::steady_clock::now();
     pair<int,int> memoizedRetPair = matrixMemoisationDriver(arrayTestCase, sizeof(arrayTestCase) / sizeof(arrayTestCase[0]));
     int memoizedTimeTaken = memoizedRetPair.first;
@@ -24,23 +24,31 @@ void runTestCase(vector<int> testCaseInput) {
     //auto memoizedEnd = chrono::steady_clock::now();
     //int memoizedTimeTaken = chrono::duration_cast<chrono::microseconds>(memoizedEnd - memoizedStart).count();
 
-    cout << "Memoized: " << memoizedResult << "\t\tTime Taken: " << memoizedTimeTaken << " microseconds" << endl;
+    outputFile << "Memoized: " << memoizedResult << "\t\tTime Taken: " << memoizedTimeTaken << " microseconds" << endl;
 
     if (dynamicTimeTaken > memoizedTimeTaken) {
-        cout << "The dynamic algorithm took " << double(double(dynamicTimeTaken) / double(memoizedTimeTaken)) << " times longer than the memoized algorithm" << endl; 
+        outputFile << "The dynamic algorithm took " << double(double(dynamicTimeTaken) / double(memoizedTimeTaken)) << " times longer than the memoized algorithm" << endl; 
+        performanceDiff << double(double(dynamicTimeTaken) / double(memoizedTimeTaken)) << endl;
     } else if (memoizedTimeTaken > dynamicTimeTaken) {
-        cout << "The memoized algorithm took " << double(double(memoizedTimeTaken) / double(dynamicTimeTaken)) << " times longer than the dynamic algorithm" << endl; 
+        outputFile << "The memoized algorithm took " << double(double(memoizedTimeTaken) / double(dynamicTimeTaken)) << " times longer than the dynamic algorithm" << endl; 
+        performanceDiff << double(double(memoizedTimeTaken) / double(dynamicTimeTaken)) << endl;
+
     } else {
-        cout << "The dynamic and memoized algorithms ran in the same amount of time" << endl;
+        outputFile << "The dynamic and memoized algorithms ran in the same amount of time" << endl;
     }
-    cout << endl;
+    outputFile << endl;
 }
 
 int main(int argc, char * argv[]) {
     if (argc > 1) {
         for (int i = 1; i < argc; i++) {
+            ofstream outputFile;
+            ofstream performanceDiff;
+
             ifstream testInputs;
             testInputs.open(argv[i]);
+            outputFile.open("output.txt");
+            performanceDiff.open("performanceDiff.txt");
 
             if (!testInputs.is_open()) {
                 cout << "File was not able to be opened!" << endl;
@@ -64,7 +72,7 @@ int main(int argc, char * argv[]) {
                     arrayDimensionsString.erase(0, stringPosition + 1);
                 }
                 testCase.push_back(stoi(arrayDimensionsString));
-                runTestCase(testCase);
+                runTestCase(testCase,outputFile,performanceDiff);
             }
         }
     }
