@@ -4,9 +4,11 @@ from matplotlib import rcParams
 txt_file = open("performanceDiff.txt", "r")
 file_content = txt_file.read()
 
-Performance_Difference = file_content.split("\n")
-for i in range(0, len(Performance_Difference)):
-    Performance_Difference[i] = float(Performance_Difference[i])
+Performance_Difference1 = file_content.split("\n")
+Performance_Difference = [1 for i in range(36)]
+for i in range(0, len(Performance_Difference1)):
+    if(Performance_Difference1[i] != ''):
+        Performance_Difference[i] = float(Performance_Difference1[i])
 
 txt_file.close()
 #Performance_Difference = [6,2,7,5,4]
