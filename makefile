@@ -9,6 +9,6 @@ testInputGenerator.o: testInputGenerator.cpp
 		g++ -o testInputGenerator testInputGenerator.cpp
 
 clean:
-	rm -f *.o *.exe *.txt driver testInputGenerator
+	rm -f *.o *.exe driver testInputGenerator
 
 
