@@ -17,12 +17,9 @@ void runTestCase(vector<int> testCaseInput,ofstream &outputFile,ofstream &perfor
     auto dynamicEnd = chrono::steady_clock::now();
     int dynamicTimeTaken = chrono::duration_cast<chrono::microseconds>(dynamicEnd - dynamicStart).count();
     outputFile << "Dynamic: " << dynamicResult << "\t\tTime Taken: " << dynamicTimeTaken << " microseconds" << endl;
-    //auto memoizedStart = chrono::steady_clock::now();
     pair<int,int> memoizedRetPair = matrixMemoisationDriver(arrayTestCase, sizeof(arrayTestCase) / sizeof(arrayTestCase[0]));
     int memoizedTimeTaken = memoizedRetPair.first;
     int memoizedResult = memoizedRetPair.second;
-    //auto memoizedEnd = chrono::steady_clock::now();
-    //int memoizedTimeTaken = chrono::duration_cast<chrono::microseconds>(memoizedEnd - memoizedStart).count();
 
     outputFile << "Memoized: " << memoizedResult << "\t\tTime Taken: " << memoizedTimeTaken << " microseconds" << endl;
 
