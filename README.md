@@ -1,4 +1,4 @@
-## CS 375 Final Project
+## Matrix Multiplication Analysis
 Members: Kevin Dougherty, Anthony Goncalves, Kamal Ryan Dehejia
 ### Matrix-Chain Multiplication
 Using:
